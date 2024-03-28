@@ -1,0 +1,59 @@
+;  
+
+/* .inslogo{
+    width: auto;
+    height: auto;
+    margin: 10px;
+    justify-content: space-between;
+    color: white;
+}
+.xlogo{
+    width: auto;
+    height: auto;
+    margin: 10px;
+    justify-content: space-between;
+    color: white;
+}
+.gitlogo{
+    width: auto;
+    height: auto;
+    margin: 10px;
+    margin-right: 20px;
+    justify-content: space-between;
+    color: white;
+} */
+.nav-item{
+    font-family: "Roboto Slab";
+}
+li {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: red;
+    float: left;
+    position: relative;
+    padding: 10px 20px;
+  }
+li::after {
+    background-color: white;
+    content: "";
+    width: 0;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    transition: width 0.35s ease 0s;
+    position: absolute;
+  }
+  
+li:hover::after {
+    width: 100%;
+}
+nav{
+    position: fixed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile a{
+    cursor: pointer;
+    margin-right:10px;
+    text-decoration: none;
+}

@@ -1,0 +1,293 @@
+@media screen and (min-width: 1024px){
+
+  .container-1{
+    width: 100%;
+    height: 620px;
+  }
+    .leftHalf {
+      width: 50%;
+      position: absolute;
+      left: 0px;
+      height: 620px;
+      background-color: #7971EA;
+      color: white;
+    }
+    .rightHalf{
+      background: url(../img/backgroungb1.jpg);
+      background-repeat: no-repeat;
+      width: 50%;
+      position: absolute;
+      opacity: 0.8;
+      right: 0px;
+      height: 620px;
+    }
+    .leftHalf h1{
+      position: relative;
+      text-align: center;
+      top: 36%;
+      font-family: "Mooli", sans-serif;
+      font-weight: 900;
+    } 
+    .leftHalf p{
+      position: relative;
+      text-align: center;
+      top: 38%;
+      font-family: "", sans-serif;
+      font-weight: 700;
+    } 
+    .leftHalf .bu-1{
+      position: relative;
+      text-align: center;
+      top: 40%;
+      background-color: black;
+      color: white;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      left: 15%;
+    }
+    .leftHalf .bu-1:hover{
+      position: relative;
+      text-align: center;
+      top: 40%;
+      border: white;
+      background-color: #7971EA;
+      color: black;
+      font-family: "", sans-serif;
+      font-weight: 700;
+    }
+    .leftHalf .bu-2{
+      position: relative;
+      text-align: center;
+      top: 40%;
+      background-color: white;
+      color: black;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      left: 30%;
+    }
+    .leftHalf .bu-2:hover{
+      position: relative;
+      text-align: center;
+      top: 40%;
+      border: white;
+      background-color: #7971EA;
+      color: white;
+      font-family: "", sans-serif;
+      font-weight: 700;
+    }
+    .leftHalf svg{
+      margin: 2%;
+    }
+    .bu-3{
+      position: fixed;
+      text-align: center;
+      top: 0%;
+      background-color: white;
+      color: black;
+      border: transparent;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      right: 0%;
+    }
+    .bu-3:hover{
+      position: fixed;
+      text-align: center;
+      top: 0%;
+      background-color: black;
+      color: white;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      right: 0%;
+    }
+    }
+    @media screen and (max-width: 600px) {
+      .container-1{
+        width: 100%;
+        height:50vh;
+      }
+      .leftHalf {
+        width: 100%;
+        height: 50vh;
+        position: absolute;
+        left: 0px;
+        height: 100%;
+        background-color:#7971EA;
+        background-image: url(../img/backgroungb1.jpg);
+        background-blend-mode: darken;
+        color: white;
+      }
+      .leftHalf svg{
+        margin: 2%;
+      }
+      .leftHalf h1{
+        position: relative;
+        text-align: center;
+        top: 36%;
+        font-family: "Mooli", sans-serif;
+        font-weight: 900;
+      }
+      .leftHalf p{
+        position: relative;
+        text-align: center;
+        top: 38%;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      } 
+      .leftHalf .bu-1{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        background-color: black;
+        color: white;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        left: 15%;
+      }
+      .leftHalf .bu-1:hover{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        border: white;
+        background-color: #7971EA;
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      }
+      .leftHalf .bu-2{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        background-color: white;
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        left: 30%;
+      }
+      .leftHalf .bu-2:hover{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        border: white;
+        background-color: #7971EA;
+        color: white;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      } 
+      .bu-3{
+        position: fixed;
+        text-align: center;
+        top: 0%;
+        background-color: white;
+        color: black;
+        border: transparent;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        right: 0%;
+        width: 10vb;
+      }
+      .bu-3:hover{
+      position: fixed;
+      text-align: center;
+      top: 0%;
+      background-color: black;
+      color: white;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      right: 0%;
+    }
+    }
+    
+    @media screen and (max-width: 1024px) and (min-width:600px){
+      .container-1{
+        width: 100%;
+        height: 100%;
+      }
+      .leftHalf {
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        height: 100%;
+        background-color: #7971EA;
+        background-image: url(../img/backgroungb1.jpg);
+        background-blend-mode: darken;
+        color: white;
+      }
+      .leftHalf svg{
+        margin: 2%;
+      }
+      .leftHalf h1{
+        position: relative;
+        text-align: center;
+        top: 36%;
+        font-family: "Mooli", sans-serif;
+        font-weight: 900;
+      }
+      .leftHalf p{
+        position: relative;
+        text-align: center;
+        top: 38%;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      } 
+      .leftHalf .bu-1{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        background-color: black;
+        color: white;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        left: 15%;
+      }
+      .leftHalf .bu-1:hover{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        border: white;
+        background-color: aqua;
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      }
+      .leftHalf .bu-2{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        background-color: white;
+        color: black;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        left: 30%;
+      }
+      .leftHalf .bu-2:hover{
+        position: relative;
+        text-align: center;
+        top: 40%;
+        border: white;
+        background-color: aqua;
+        color: white;
+        font-family: "", sans-serif;
+        font-weight: 700;
+      } 
+      .bu-3{
+        position: fixed;
+        text-align: center;
+        top: 0%;
+        background-color: white;
+        color: black;
+        border: transparent;
+        font-family: "", sans-serif;
+        font-weight: 700;
+        right: 0%;
+      }
+      .bu-3:hover{
+      position: fixed;
+      text-align: center;
+      top: 0%;
+      background-color: black;
+      color: white;
+      font-family: "", sans-serif;
+      font-weight: 700;
+      right: 0%;
+    }
+    }

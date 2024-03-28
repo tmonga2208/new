@@ -1,0 +1,27 @@
+
+.btn-group-5{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+.btn-7:hover, .btn-8:hover{
+    background-color: #D9D9D9;
+    color: #1E1E1E;
+}
+.btn-7, .btn-8{
+  margin: 0px 10px;
+  padding: 10px 20px;
+  border-radius: 10%;
+  font-weight: bolder;
+  font-size: larger;
+  background-color: #1E1E1E;
+  border: none;
+  color: #D9D9D9;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
