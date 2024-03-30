@@ -17,7 +17,6 @@ function Browse1(){
     return (
         <div className="container">
                 <BookCard 
-                
                 book = {Books[0].book}
                 title = {Books[0].title}
                 author = {Books[0].author}

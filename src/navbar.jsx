@@ -21,7 +21,7 @@ function NavBar(){
           </li>
 
           <li className="nav-item">
-            <a className="nav-link">Community</a>
+            <a className="nav-link" href="/chat">Community</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Contact</a>

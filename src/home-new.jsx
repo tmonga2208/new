@@ -1,41 +1,32 @@
 import React from "react";
-import './css/homenew.css';
+import styles from './css/homenew.module.css';
 
+const defaultStyles = {
+    "container-2": "default-container",
+    "lefthalf-1": "default-lefthalf",
+    "img_x": "default-img",
+    "righthalf-1": "default-righthalf",
+    "newp": "default-newp",
+    "homep_1": "default-homep"
+  };
+
+const mergedStyles = { ...defaultStyles, ...styles };
 
 function HomeNew(props){
+    const containerClass = props.variant === 'Second' ? mergedStyles['container-2-reverse'] : mergedStyles['container-2'];
+    const imgClass = props.variant === 'Second' ? mergedStyles['img_x-second'] : mergedStyles['img_x'];
     return (
         <div>
-            <div  className="container-x">
-                <p className="container-x-p">lorem ipsum lorem ipsidjowodcdecssocnk sdfcfsjicndescneiacnnicdsniuc jfodhpfioaeioh</p>
-            </div>
-        <div  className="container-2">
-                <div className="lefthalf-1">
-                    <img className="img-x" src={props.img} alt="book"/>
+        <div  className={containerClass}>
+                <div className={mergedStyles["lefthalf-1"]}>
+                    <img className= {imgClass} src={props.img} alt="book"/>
                 </div>
-                <div className="righthalf-1">
-                    <h3 className="newp">{props.tit2}</h3>
-                    <p className="homep-1">{props.para}</p> 
+                <div className={mergedStyles["righthalf-1"]}>
+                    <h3 className={mergedStyles["newp"]}>{props.tit2}</h3>
+                    <p className={mergedStyles["homep_1"]}>{props.para}</p> 
                 </div>
             </div>
-            <div  className="container-3">
-                <div className="lefthalf-2">
-                    <img className="img-x1" src={props.img} alt="book"/>
-                </div>
-                <div className="righthalf-1">
-                    <h3 className="newp">{props.tit2}</h3>
-                    <p className="homep-1">{props.para}</p> 
-                </div>
-            </div>
-            <div  className="container-2">
-                <div className="lefthalf-1">
-                    <img className="img-x" src={props.img} alt="book"/>
-                </div>
-                <div className="righthalf-1">
-                    <h3 className="newp">{props.tit2}</h3>
-                    <p className="homep-1">{props.para}</p> 
-                </div>
-            </div>
-            </div>
+        </div>
     );
 }
 
