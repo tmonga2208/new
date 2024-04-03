@@ -1,0 +1,168 @@
+.body {
+  background-color: #282c34;
+}
+
+.App {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.App .head {
+  background-color: black;
+  height: 10vh;
+  min-height: 50px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.App .sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: black;
+}
+
+.x2p{
+  color:white;
+  text-align: center;
+}
+
+.mau {
+  padding: 10px;
+  height: 80vh;
+  margin: 10vh 0 10vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mau::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.mau::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+.mau::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+.fumb{
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(24, 23, 23);
+  width: 100%;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.fumb .hn {
+  width: 20%;
+  background-color: rgb(56, 56, 143);
+}
+
+
+.x12 {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background: rgb(58, 58, 58);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+
+.hn{
+  background-color: #282c34; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.hn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.sign_in {
+  color: #282c34;
+  background: white;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 24px;
+}
+
+
+
+
+.ul, .li {
+  text-align: left;
+  list-style: none;
+}
+
+.pou {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+
+.sent {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+
+}
+
+.sent .pou {
+  color: white;
+  background: #0b93f6;
+}
+.received .pou {
+  background: #181717;
+  color: white;
+}
+
+.oum{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+
+.sign_out{
+  padding: 5px;
+  background-color: #282c34;
+  color: white;
+}
+.received{
+  align-self: flex-start;
+}

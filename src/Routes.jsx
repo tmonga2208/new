@@ -9,6 +9,8 @@ import HomePageBig from "./HomePageBig.jsx";
 import BigPage2 from "./Bigpage2.jsx"
 import BigPage3 from "./BigPage3.jsx"
 import SignIn from "./signin.jsx";
+import Chat from "./chat.js";
+import Community1 from "./chat.js";
 
 function Route1(){
     return (
@@ -22,6 +24,7 @@ function Route1(){
             <Route path="signup" element={<SignUp/>} />
             <Route path="signin" element={<SignIn/>} />
             <Route path="home" element={<HomePageBig/>} />
+            <Route path="/chat" element={<Community1/>} /> 
         </Routes>
       </BrowserRouter>
     )

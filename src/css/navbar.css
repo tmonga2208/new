@@ -57,3 +57,18 @@ nav{
     margin-right:10px;
     text-decoration: none;
 }
+.profileimg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+}
+.profileimg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
