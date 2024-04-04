@@ -23,6 +23,7 @@ function Browse1(){
                 body = {Books[0].body}
                 img = {image0}
                 read ={read0}
+                buy = {Books[0].buy}
                 />
                 <BookCard 
                 book = {Books[1].book}

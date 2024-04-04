@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { auth } from './sinup';
 import { signInWithEmailAndPassword } from "firebase/auth";
+import './css/signin.css'
 
 function SignIn() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ function SignIn() {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
     try {
       const result = await signInWithPopup(auth, provider);
       navigate('/browse1');
@@ -30,7 +34,7 @@ function SignIn() {
   };
 
   return (
-    <div className="qontainer">
+    <div className="qontainer_2">
       <div className="big-box">
         <form className="frm" onSubmit={signIn}>
           <label htmlFor="em">Enter Email</label>

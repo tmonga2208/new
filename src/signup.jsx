@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import './css/signup.css';
+import { setDoc } from 'firebase/firestore';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -40,11 +41,16 @@ function SignUp() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             updateProfile(user, { displayName: username, photoURL: downloadURL })
+              .then(() => {
+                setDoc(doc(db, 'users', user.uid), {
+                  username: username,
+                })
+              })
               .catch(error => console.error(error));
           });
           navigate('/browse1');
         }
-      );
+      )
     } catch (error) {
       console.error(error);
     }

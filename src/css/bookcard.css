@@ -11,13 +11,13 @@
     background-color: #1E1E1E;
     border: solid white 1px;
     margin: 10px;
-    pointer-events: none;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .card:hover{
     margin:40px;
     transition: .7s;
 }
+
 .card img{
     width: fit-content;
     height: 100%;
@@ -111,7 +111,7 @@
 .btn-group-2{
     display: flex;
     flex-direction: row;
-    cursor: pointer;
+    cursor:pointer;
 }
 .btn-2{
     cursor: pointer;
@@ -141,7 +141,15 @@
     background-color: black;
     color: white;
 }
+.card {
+    pointer-events: none;
 }
+
+.card button {
+    pointer-events: auto;
+}
+}
+
 @media screen and (max-width: 640px){
     .card{
         display: flex;

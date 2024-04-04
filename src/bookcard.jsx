@@ -12,10 +12,10 @@ function BookCard(props){
           <p className="card-body">{props.body}</p>
       </div>
       <div className="btn-group-1">
-      <a href={props.buy} target="_blank"><button className="btn-1 btn-outline-success">More</button></a>
+      <a href={props.buy} target="_blank"><button className="btn-1 btn-outline-success"disabled={false}>More</button></a>
         <div className="btn-group-2">
-        <a href={props.read} target="_blank"><button className="btn-2 btn-outline-success">Read</button></a>
-        <a href={props.review} target="_blank"><button className="btn-3 btn-outline-success">Review</button></a>
+        <a href={props.read} target="_blank"><button className="btn-2 btn-outline-success" disabled={false}>Read</button></a>
+        <a href={props.review} target="_blank"><button className="btn-3 btn-outline-success"disabled={false}>Review</button></a>
         </div>
       </div>
   </div>

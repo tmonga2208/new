@@ -7,6 +7,7 @@ const Books = [
         body : "500 Pages",
         next : "/browse2" ,
         prev :"#" ,
+        buy :"more1"
         } ,
     {
         id : 2 ,

@@ -1,0 +1,58 @@
+.max_con{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.imgcon{
+    display: flex;
+    flex-direction: column;
+    max-width: 15%;
+    align-items: center;
+    justify-content: center;
+}
+.imgcon img{
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    margin-left:40% ;
+}
+.book_info{
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    margin: 5%;
+}
+.book_info .book_in ,.book_info .rev{
+    border: solid black 2px;
+    padding: 2%;
+    margin: 2% 0%;
+}
+.book_info .book_title{
+    font-size: 2rem;
+    font-weight: 700;
+}
+.bout{
+    display: flex;
+    flex-direction: column;
+    max-width: 10%;
+}
+.bout .bigbout{
+    width: 100%;
+}
+.bigbout button{
+    width: 100%;
+}
+.bout .smallbout{
+    width: 100%;
+}
+.smallbout button{
+    width: 100%;
+}
+.smallbout{
+    display: flex;
+    flex-direction: row;
+}
+.bigbout , .smallbout{
+    margin-right: 20%
+}
