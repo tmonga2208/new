@@ -6,7 +6,7 @@ import image11 from "./img/t2.jpg"
 import image12 from "./img/t3.jpg"
 import image13 from "./img/t4.jpg"
 import image14 from "./img/t5.jpg"
-import './css/browse1.css'
+import  stylesheet from './css/browse1.module.css'
 import read10 from "./pdf/t1.pdf"
 import read11 from "./pdf/t2.pdf"
 import read12 from "./pdf/t3.pdf"
@@ -15,7 +15,7 @@ import read14 from "./pdf/t5.pdf"
 
 function Browse3(){
     return (
-        <div className="container">
+        <div className={stylesheet.container}>
                 <BookCard 
                 book = {Books[10].book}
                 title = {Books[10].title}

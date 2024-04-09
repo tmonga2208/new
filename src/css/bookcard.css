@@ -160,7 +160,8 @@
         display: flex;
         flex-direction: row;
         position: absolute;
-        right: 5%;
+        right: 45%;
+        bottom: 5%;
     }
     .btn-group-2 .btn-3{
         display: none;
@@ -169,7 +170,8 @@
         display: none;
     }
     .btn-group-1 .btn-1{
-        padding: 10% 20%;
+        padding: 5%;
+        width: 90%;
     }
     .btn-group-1{
         display: flex;
@@ -182,7 +184,7 @@
     .card-content .card-title{
         display:flex;
         flex-direction: row;
-        width: 50%;
+        width: fit-content;
         height: fit-content;
         position: absolute;
         left: 20%;

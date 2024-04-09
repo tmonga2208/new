@@ -11,13 +11,13 @@ import read1 from "./pdf/p2.pdf"
 import read2 from "./pdf/p3.pdf"
 import read3 from "./pdf/p4.pdf"
 import read4 from "./pdf/p5.pdf"
-import './css/browse1.css'
+import  stylesheet from './css/browse1.module.css'
 
 
 function Browse1(){
     return (
-        <div className="container">
-                <BookCard 
+        <div className={stylesheet.container}>
+                <BookCard className={stylesheet.card}
                 book = {Books[0].book}
                 title = {Books[0].title}
                 author = {Books[0].author}
