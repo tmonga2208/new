@@ -39,23 +39,8 @@ function NavBar(){
       <div className="collapse navbar-collapse" id="navbarsExample04">
         <ul className="navbar-nav me-auto mb-2 mb-md-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="home">Home</a>
+            <Link className="nav-link" to="/home">Home</Link>
           </li>
-
-          <li className="nav-item">
-          <Link className="nav-link" to="/chat">Community</Link>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Contact</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">About Us</a>
-          </li>
-         {!user && (
-          <li className="nav-item">
-          <a className="nav-link bg-dark">Sign In</a>
-          </li>
-         )}
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Authors</a>
             <ul className="dropdown-menu">
@@ -64,6 +49,20 @@ function NavBar(){
               <li><a className="dropdown-item" href="#">Rick Riordan Presents </a></li>
             </ul>
           </li>
+          <li className="nav-item">
+          <Link className="nav-link" to="/chat">Community</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/contact">Contact</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/aboutus">About Us</Link>
+          </li>
+         {!user && (
+          <li className="nav-item">
+          <a className="nav-link bg-dark">Sign In</a>
+          </li>
+         )}
         </ul>
 <div className="profile">
 <div className="dropdown">
@@ -81,7 +80,7 @@ function NavBar(){
   {
   auth.currentUser 
     ? <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-    <li><Link className="dropdown-item" to="/signin">User Info</Link></li>
+    <li><Link className="dropdown-item" to="/userinfo">User Info</Link></li>
       <li><Link className="dropdown-item"  to="/browse1" 
     onClick={() => {
       auth.signOut().then(() => {

@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head{
+    display: flex;
+    background-color: black;
+    color: white;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+.back{
+    position: absolute;
+    height: 50px;
+    width: 90px;
+    top: 0;
+    left: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.container .profilePic{
+    width: 20%;
+    height: 20%;
+    border-radius: 100%;
+}
+.email{
+    width: 20%;
+    padding: 10px;
+    border: solid black 1px;
+    margin: 10px;
+}
+.username{
+    margin: 10px;
+    width: 20%;
+    padding: 10px;
+    border: solid black 1px;
+}
+.password{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+@media screen and (max-width: 600px){
+    .head{
+        display: flex;
+        background-color: black;
+        color: white;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+    }
+    .container img{
+        width: 50%;
+        height: 50%;
+    }
+    .email{
+        width: 50%;
+    }
+    .username{
+        width: 50%;
+    }
+    .password{
+        width: 50%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    .password button{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getAuth, setPersistence, browserLocalPersistence, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import './css/signup.css';
-import { setDoc } from 'firebase/firestore';
+import { setDoc ,doc ,getFirestore} from 'firebase/firestore';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -12,8 +12,7 @@ function SignUp() {
   const [username, setUsername] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const navigate = useNavigate();
-  const auth = getAuth();
-  const storage = getStorage();
+  const db = getFirestore();
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -22,9 +21,11 @@ function SignUp() {
       return;
     }
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
+      const auth = getAuth();
+      await setPersistence(auth, browserLocalPersistence);
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('User created:', user);
+      const storage = getStorage();
       // Upload the profile image to Firebase Storage
       const profilePicRef = ref(storage, `profileImages/${user.uid}.png`);
 
@@ -38,19 +39,17 @@ function SignUp() {
           // Handle unsuccessful uploads
           console.error(error);
         }, 
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            updateProfile(user, { displayName: username, photoURL: downloadURL })
-              .then(() => {
-                setDoc(doc(db, 'users', user.uid), {
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+            await updateProfile(user, { displayName: username, photoURL: downloadURL })
+            console.log('Profile updated:', user);
+            await user.reload();
+              await setDoc(doc(db, 'users', user.uid), {
                   username: username,
-                })
-              })
-              .catch(error => console.error(error));
-          });
-          navigate('/browse1');
+                });
+                navigate('/browse1');
         }
-      )
+      );
     } catch (error) {
       console.error(error);
     }
@@ -73,8 +72,9 @@ function SignUp() {
             <input className="my" id="cpa" type="password" required onChange={e => setConfirmPassword(e.target.value)}></input>
             <label htmlFor="img">Profile Image</label>
             <input className="my" id="img" type="file" onChange={e => {
-            setProfileImage(e.target.files[0]);
-            console.log(profileImage);
+            const file = e.target.files[0];
+            setProfileImage(file);
+            console.log(file);
             }}></input>
             <input type="submit" className="mybtn" value="Signup"/>
           </form>

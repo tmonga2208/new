@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/bookcard.css";
+import { Link } from "react-router-dom";
 
 function BookCard(props){
     return (
@@ -12,7 +13,9 @@ function BookCard(props){
           <p className="card-body">{props.body}</p>
       </div>
       <div className="btn-group-1">
-      <a href={props.buy} target="_blank"><button className="btn-1 btn-outline-success"disabled={false}>More</button></a>
+      <Link to={`/more/${props.index}`}>
+      <button className="btn-1 btn-outline-success" disabled={false}>More</button>
+       </Link>
         <div className="btn-group-2">
         <a href={props.read} target="_blank"><button className="btn-2 btn-outline-success" disabled={false}>Read</button></a>
         <a href={props.review} target="_blank"><button className="btn-3 btn-outline-success"disabled={false}>Review</button></a>

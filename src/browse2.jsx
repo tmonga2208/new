@@ -23,6 +23,7 @@ function Browse2(){
                 body = {Books[5].body}
                 img = {image5}
                 read ={read5}
+                index ={Books[5].id}
                 />
                 <BookCard 
                 book = {Books[6].book}
@@ -31,6 +32,7 @@ function Browse2(){
                 body = {Books[6].body}
                 img = {image6}
                 read ={read6}
+                index ={Books[6].id}
                 />
                 <BookCard 
                 book = {Books[7].book}
@@ -39,6 +41,7 @@ function Browse2(){
                 body = {Books[7].body}
                 img = {image7}
                 read ={read7}
+                index ={Books[7].id}
                 />
                 <BookCard 
                 book = {Books[8].book}
@@ -47,6 +50,7 @@ function Browse2(){
                 body = {Books[8].body}
                 img = {image8}
                 read ={read8}
+                index ={Books[8].id}
                 />
                 <BookCard 
                 book = {Books[9].book}
@@ -55,6 +59,7 @@ function Browse2(){
                 body = {Books[9].body}
                 img = {image9}
                 read ={read9}
+                index ={Books[9].id}
                 />
         </div>
     );

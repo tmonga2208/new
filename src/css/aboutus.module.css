@@ -1,0 +1,33 @@
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto 0; /* Center the container horizontally */
+    padding: 20px; /* Add some padding */
+    background-color: #f9f9f9; /* Add a light background color */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.teamin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Align items vertically */
+    margin-top: 20px; /* Add some margin at the top */
+}
+
+.teamimg {
+    width: 40%;
+    height: 40%;
+    object-fit: cover; /* Make sure the image covers the area */
+    border-radius: 10px; /* Round the corners */
+}
+
+.teamtext {
+    width: 50%; /* Set a width */
+    margin-left: 5%; /* Reduce the left margin */
+    font-size: 1.2em; /* Increase the font size */
+    line-height: 1.5; /* Increase the line height for readability */
+    color: #333; /* Make the text darker */
+}

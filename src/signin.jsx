@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider ,setPersistence, browserLocalPersistence } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { auth } from './sinup';
@@ -13,6 +13,7 @@ function SignIn() {
   const signIn = async (e) => {
     e.preventDefault();
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       navigate('/browse1');
     } catch (error) {
@@ -26,6 +27,7 @@ function SignIn() {
       prompt: 'select_account'
     });
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const result = await signInWithPopup(auth, provider);
       navigate('/browse1');
     } catch (error) {
