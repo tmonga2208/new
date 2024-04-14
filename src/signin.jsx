@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider ,setPersistence, browserLocalPersistence } from "firebase/auth";
+import { getAuth, signInWithRedirect, GoogleAuthProvider ,setPersistence, browserLocalPersistence, signInWithRedirect } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { auth } from './sinup';
@@ -33,7 +33,7 @@ function SignIn() {
     });
     try {
       await setPersistence(auth, browserLocalPersistence);
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithRedirect(auth, provider);
       navigate('/browse1');
     } catch (error) {
       console.error(error);
