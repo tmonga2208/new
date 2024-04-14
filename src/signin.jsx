@@ -9,19 +9,24 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Add this line
 
   const signIn = async (e) => {
     e.preventDefault();
+    setLoading(true); // Add this line
     try {
       await setPersistence(auth, browserLocalPersistence);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       navigate('/browse1');
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false); // Add this line
     }
   }
 
   const signInWithGoogle = async () => {
+    setLoading(true); // Add this line
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({
       prompt: 'select_account'
@@ -32,11 +37,15 @@ function SignIn() {
       navigate('/browse1');
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false); // Add this line
     }
   };
 
   return (
     <div className="qontainer_2">
+      {loading ? <div className="loading-screen">
+      <div class="spinner"></div></div> : null} {/* Add this line */}
       <div className="big-box">
         <form className="frm" onSubmit={signIn}>
           <label htmlFor="em">Enter Email</label>
