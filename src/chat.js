@@ -146,9 +146,11 @@ function ChatMessage(props) {
   const auth = getAuth();
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
+  const imageUrl = photoURL || 'https://www.vecteezy.com/vector-art/20765399-default-profile-account-unknown-icon-black-silhouette';
+
   return (<>
     <div className={`message ${css[messageClass]}`}>
-      <img className={css.oum} src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} alt='profile_img' />
+      <img className={css.oum} src={imageUrl} alt='profile_img' />
       <p className={css.pou}>{text}</p>
     </div>
   </>)
