@@ -71,7 +71,7 @@ function SignUp() {
         <form className="from" onSubmit={signUp}>
             <label htmlFor="em">Enter Email</label>
             <input className="my1" id="em" type="text" required onChange={e => setEmail(e.target.value)}></input>
-            <label htmlFor="us">Enter Username</label>
+            <label htmlFor="us">Enter Name</label>
             <input className="my1" id="us" type="text" required onChange={e => setUsername(e.target.value)}></input>
             <label htmlFor="pa">Enter Password</label>
             <input className="my1" id="pa" type="password" required onChange={e => setPassword(e.target.value)}></input>
