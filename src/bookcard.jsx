@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 function BookCard(props){
     return (
-  < div className="card">
+  <div className="card">
             <img  id="hello"  src={props.img}></img>
       <div className="card-content">
           <h2 className="card-title">{props.book}</h2>
-            <h4 className="card-author">{props.author}</h4>
-            <h3 className="card-titler">{props.title}</h3>
+          <h4 className="card-author">{props.author}</h4>
+          <h3 className="card-titler">{props.title}</h3>
           <p className="card-body">{props.body}</p>
       </div>
       <div className="btn-group-1">
