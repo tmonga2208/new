@@ -120,6 +120,9 @@
     position: absolute;
     right: 0%;
 }
+.card{
+    pointer-events: none;
+}
 }
 
 @media screen and (min-width: 641px) and (max-width: 1349px){
@@ -238,6 +241,12 @@
         .btn-group-1{
             position: absolute;
             right: 0%;
+        }
+        .card{
+            pointer-events: none;
+        }
+        .btn-group-1{
+            pointer-events: all;
         }
         }
 

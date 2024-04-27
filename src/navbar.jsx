@@ -58,6 +58,9 @@ function NavBar(){
           <li className="nav-item">
             <Link className="nav-link" to="/aboutus">About Us</Link>
           </li>
+          <li className="nav-item">
+          <Link className="nav-link" to="/subscription">Subscription</Link>
+          </li>
          {!user && (
           <li className="nav-item">
           <a className="nav-link bg-dark">Sign In</a>

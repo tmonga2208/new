@@ -17,7 +17,9 @@ function BookCard(props){
       <button className="btn-1 btn-outline-success" disabled={false}>More</button>
        </Link>
         <div className="btn-group-2">
-        <a href={props.read} target="_blank"><button className="btn-2 btn-outline-success" disabled={false}>Read</button></a>
+       <a  target="_blank">
+        <button   className="btn-2 btn-outline-success">Read</button>
+        </a>
         <a href={props.review} target="_blank"><button className="btn-3 btn-outline-success"disabled={false}>Review</button></a>
         </div>
       </div>

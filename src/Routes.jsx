@@ -17,6 +17,7 @@ import UserInfo from "./userinfo.jsx";
 import AboutUs from "./aboutus.jsx";
 import ContactForm from "./contact.jsx";
 import { UserContext } from "./usercontxt.jsx";
+import BookSubscription from "./book_subscription.jsx";
 
 function Route1(){
   const user = useContext(UserContext);
@@ -36,6 +37,7 @@ function Route1(){
             <Route path="/userinfo" element={<UserInfo/>} />
             <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/contact" element={<ContactForm/>} />
+            <Route path="/subscription" element={<BookSubscription/>} />
             {Books.map((book, index) => (
           <Route 
             key={index}

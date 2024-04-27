@@ -46,8 +46,17 @@ function SignUp() {
             await updateProfile(user, { displayName: username, photoURL: downloadURL })
             console.log('Profile updated:', user);
             await user.reload();
-              await setDoc(doc(db, 'users', user.uid), {
+                await setDoc(doc(db, 'subscriptions', user.uid), {
+                  userId: user.uid,
+                  bookId: 0, // ID of the free book
+                });
+                await setDoc(doc(db, 'users', user.uid), {
                   username: username,
+                });
+                await setDoc(doc(db, 'subscriptions', user.uid), {
+                  userId: user.uid,
+                  bookId: 0, // ID of the free book
+                  tier: 'Free', // Set the tier to 'Free'
                 });
                 navigate('/browse1');
         }

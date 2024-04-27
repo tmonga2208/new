@@ -25,7 +25,7 @@
 .nav-item{
     font-family: "Roboto Slab";
 }
-li {
+.nav-item{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: red;
@@ -33,7 +33,7 @@ li {
     position: relative;
     padding: 10px 20px;
   }
-li::after {
+.nav-item::after {
     background-color: white;
     content: "";
     width: 0;
@@ -44,7 +44,7 @@ li::after {
     position: absolute;
   }
   
-li:hover::after {
+.nav-item:hover::after {
     width: 100%;
 }
 nav{
