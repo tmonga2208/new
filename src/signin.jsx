@@ -28,6 +28,7 @@ function SignIn() {
     try {
       await setPersistence(auth, browserLocalPersistence);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      alert('Sign in successful!')
     } catch (error) {
       console.error(error);
     } finally {
@@ -46,6 +47,7 @@ function SignIn() {
       const result = await signInWithPopup(auth, provider);
       // The signed-in user info.
       var user = result.user;
+      alert('Sign in with Google successful!');
     } catch (error) {
       console.error(error);
     } finally {

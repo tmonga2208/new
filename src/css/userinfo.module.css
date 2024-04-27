@@ -56,6 +56,49 @@
     align-items: center;
     text-decoration: none;
 }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.progressBar {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+}
+  .profilePicWrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .uploadButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .profilePicWrapper:hover .uploadButton {
+    display: block;
+  }
+  .container .profilePicWrapper .profilePic:hover{
+    opacity: 50%;
+    cursor: pointer;
+  }
 }
 @media screen and (max-width: 600px){
     .head{
@@ -115,4 +158,46 @@
         align-items: center;
         text-decoration: none;
     }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .progressBar {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 2s linear infinite;
+    }
+      .profilePicWrapper {
+        position: relative;
+        display: inline-block;
+      }
+      .uploadButton {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: none;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        text-align: center;
+        display: none;
+        cursor: pointer;
+      }
+      
+      .fileInput {
+        display: none;
+      }
+      
+      .profilePicWrapper:hover .uploadButton {
+        display: block;
+      }
+      .container .profilePicWrapper .profilePic:hover{
+        opacity: 50%;
+        cursor: pointer;
+      }
 }

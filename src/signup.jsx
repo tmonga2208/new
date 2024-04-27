@@ -19,14 +19,14 @@ function SignUp() {
     e.preventDefault();
     setLoading(true);
     if (password !== confirmPassword) {
-      console.error("Passwords do not match");
+      alert("Passwords do not match");
       return;
     }
     try {
       const auth = getAuth();
       await setPersistence(auth, browserLocalPersistence);
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
-      console.log('User created:', user);
+
       const storage = getStorage();
       // Upload the profile image to Firebase Storage
       const profilePicRef = ref(storage, `profileImages/${user.uid}.png`);
@@ -40,29 +40,27 @@ function SignUp() {
         (error) => {
           // Handle unsuccessful uploads
           console.error(error);
+          alert('Upload failed!'); 
         }, 
         async () => {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
             await updateProfile(user, { displayName: username, photoURL: downloadURL })
             console.log('Profile updated:', user);
             await user.reload();
-                await setDoc(doc(db, 'subscriptions', user.uid), {
-                  userId: user.uid,
-                  bookId: 0, // ID of the free book
-                });
                 await setDoc(doc(db, 'users', user.uid), {
                   username: username,
                 });
                 await setDoc(doc(db, 'subscriptions', user.uid), {
                   userId: user.uid,
-                  bookId: 0, // ID of the free book
                   tier: 'Free', // Set the tier to 'Free'
                 });
                 navigate('/browse1');
+                alert('Signup Success')
         }
       );
     } catch (error) {
       console.error(error);
+      alert('Signup failed!');
     }
     finally {
       setLoading(false); // Add this line
@@ -95,7 +93,7 @@ function SignUp() {
             <input type="submit" className="mybtn" value="Signup"/>
           </form>
             <div className="mygrp2">
-            <p className="mytxt">Already have an account? <a href="signin">Login</a></p>
+            <p className="mytxt">Already have an account? <Link to="/signin">Login</Link></p>
             </div>
         </div>
       </div>

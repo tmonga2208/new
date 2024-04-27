@@ -1,7 +1,7 @@
 @media (min-width: 1024px) and (max-width: 1800px){
 .qontainer{
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,11 +114,28 @@ label{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.success-box {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border-color: #4F8A10;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.error-box {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border-color: #D8000C;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
 }
 @media screen and (max-width: 640px){
   .qontainer{
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -231,11 +248,28 @@ label{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  .success-box {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border-color: #4F8A10;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .error-box {
+    color: #D8000C;
+    background-color: #FFBABA;
+    border-color: #D8000C;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
 }
 @media (min-width:640px) and (max-width:1023px){
   .qontainer{
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -343,5 +377,22 @@ label{
     height: 120px;
     animation: spin 2s linear infinite;
   
+}
+.success-box {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border-color: #4F8A10;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.error-box {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border-color: #D8000C;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 }
