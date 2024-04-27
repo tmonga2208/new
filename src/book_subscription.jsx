@@ -1,4 +1,4 @@
-import React ,{useState ,useEffect} from "react";
+import React ,{useState ,useEffect ,useContext} from "react";
 import styles from "./css/book_subscription.module.css";
 import BookComponent from "./book_component";
 import BookSS from "./Booksss";
@@ -9,11 +9,23 @@ import { getDoc } from 'firebase/firestore';
 import { onSnapshot } from "firebase/firestore";
 import { doc, setDoc } from 'firebase/firestore';
 import Footer from "./footer.jsx"
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "./usercontxt.jsx";
 
-function BookSubscription( uId , isSubscribed) {
+function BookSubscription(isSubscribed) {
   const [selectedTier, setSelectedTier] = useState(null);
+  const { user } = useContext(UserContext);
+  const uId = user && user.uid ? user.uid : null;
+  const navigate = useNavigate();
+  console.log(user);
+  const freeTierIndex = BookSS.findIndex(book => book.head1 === 'Free');
 
   useEffect(() => {
+    if (!uId) {
+      console.log('User is not logged in');
+      setSelectedTier(freeTierIndex);
+      return;
+    }
     const userDoc = doc(db, 'subscriptions', uId.toString());
 
     const unsubscribe = onSnapshot(userDoc, (doc) => {
@@ -39,12 +51,20 @@ function BookSubscription( uId , isSubscribed) {
   }, [uId]);
 
   const handleSelect = (tier) => {
+    if (!uId) {
+      console.log('User is not logged in. Tier is set to Free and cannot be updated.');
+      return;
+    }
     if (tier || isSubscribed) {
       setSelectedTier(tier);
     }
   };
 
 const handlePayNow = async () => {
+  if (!uId) {
+    console.log('User is not logged in. Tier is set to Free and cannot be updated.');
+    return;
+  }
   if (selectedTier !== null) {
     const tierName = BookSS[selectedTier].head1; // Get the tier name
     console.log(`Selected tier: ${tierName}`); // Log the selected tier
@@ -63,13 +83,12 @@ const handlePayNow = async () => {
         tier: tierName, // Update the tier name
       });
     }
-
     console.log('Tier updated successfully'); // Log the success message
   } else {
-    console.log('No tier selected'); // Log the message if no tier is selected
+    console.log('No tier selected or user is not logged in'); // Log the message if no tier is selected or user is not logged in
+    navigate('/login'); // Redirect to the login page
   }
 };
-
   return(
     <>
     <NavBar/>

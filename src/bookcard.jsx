@@ -9,7 +9,11 @@ function BookCard({ uId, ...props }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(uId);
+    if (!uId) {
+      console.log('User is not logged in');
+      setTier('Free');
+      return;
+    }
     const userDoc = doc(db, 'subscriptions', String(uId)); // 'subscriptions' is your collection name
 
     const unsubscribe = onSnapshot(userDoc, (doc) => {

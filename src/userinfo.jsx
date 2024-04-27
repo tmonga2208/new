@@ -18,14 +18,19 @@ function UserInfo() {
     const unsubscribe = onIdTokenChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const profilePicRef = ref(storage, `profileImages/${currentUser.uid}.png`); // replace with the actual path to the image
-        getDownloadURL(profilePicRef)
-          .then((url) => {
-            setProfilePicUrl(url);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        // If the user signed in with Google, use the Google profile picture
+        if (currentUser.providerData[0].providerId === 'google.com') {
+          setProfilePicUrl(currentUser.photoURL);
+        } else {
+          const profilePicRef = ref(storage, `profileImages/${currentUser.uid}.png`); // replace with the actual path to the image
+          getDownloadURL(profilePicRef)
+            .then((url) => {
+              setProfilePicUrl(url);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
         // Fetch the username from Firestore
         const docRef = doc(db, 'users', currentUser.uid);
         const docSnap = await getDoc(docRef);

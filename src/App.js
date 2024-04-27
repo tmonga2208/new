@@ -5,7 +5,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from 'react';
 import { UserContext } from "./usercontxt.jsx";
 
-
 function App() {
   const [user, setUser] = useState(null);
 
@@ -24,11 +23,12 @@ function App() {
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
+
   return (
-    <UserContext.Provider value={user}>
-    <Route1 />
-  </UserContext.Provider>
-);
+    <UserContext.Provider value={{ user }}>
+      <Route1 />
+    </UserContext.Provider>
+  );
 }
 
 export default App;
