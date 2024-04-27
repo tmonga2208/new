@@ -1,9 +1,6 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
-import React ,{useContext} from "react";
-import HomePage from "./homepage";
-import Browse1 from "./browse1";
+import React from "react";
 import SignUp from "./signup";
-import  ReactDOM  from "react";
 import BigPage from "./BigPage.jsx";
 import HomePageBig from "./HomePageBig.jsx";
 import BigPage2 from "./Bigpage2.jsx"
@@ -16,11 +13,9 @@ import More from "./more.js";
 import UserInfo from "./userinfo.jsx";
 import AboutUs from "./aboutus.jsx";
 import ContactForm from "./contact.jsx";
-import { UserContext } from "./usercontxt.jsx";
 import BookSubscription from "./book_subscription.jsx";
 
 function Route1(){
-  const user = useContext(UserContext);
     return (
         <BrowserRouter>
         <Routes>

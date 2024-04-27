@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useContext} from "react";
 import BookCard from './bookcard';
 import Books from "./books.js"
 import image10 from "./img/t1.jpg"
@@ -12,8 +12,10 @@ import read11 from "./pdf/t2.pdf"
 import read12 from "./pdf/t3.pdf"
 import read13 from "./pdf/t4.pdf"
 import read14 from "./pdf/t5.pdf"
+import { UserContext } from "./usercontxt.jsx";
 
 function Browse3(){
+    const userId = useContext(UserContext);
     return (
         <div className={stylesheet.container}>
                 <BookCard 
@@ -24,6 +26,7 @@ function Browse3(){
                 img = {image10}
                 read ={read10}
                 index ={Books[10].id}
+                uId={userId}
                 />
                 <BookCard 
                 book = {Books[11].book}
@@ -33,6 +36,7 @@ function Browse3(){
                 img = {image11}
                 read ={read11}
                 index ={Books[11].id}
+                uId={userId}
                 />
                 <BookCard 
                 book = {Books[12].book}
@@ -42,6 +46,7 @@ function Browse3(){
                 img = {image12}
                 read ={read12}
                 index ={Books[12].id}
+                uId={userId}
                 />
                 <BookCard 
                 book = {Books[13].book}
@@ -51,6 +56,7 @@ function Browse3(){
                 img = {image13}
                 read ={read13}
                 index ={Books[13].id}
+                uId={userId}
                 />
                 <BookCard 
                 book = {Books[14].book}
@@ -60,6 +66,7 @@ function Browse3(){
                 img = {image14}
                 read ={read14}
                 index ={Books[14].id}
+                uId={userId}
                 />
         </div>
     );

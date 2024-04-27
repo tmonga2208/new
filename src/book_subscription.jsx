@@ -4,7 +4,7 @@ import BookComponent from "./book_component";
 import BookSS from "./Booksss";
 import NavBar from "./navbar";
 import { db } from "./sinup.js";
-import { collection, addDoc, updateDoc, query, where } from 'firebase/firestore';
+import { updateDoc} from 'firebase/firestore';
 import { getDoc } from 'firebase/firestore';
 import { onSnapshot } from "firebase/firestore";
 import { doc, setDoc } from 'firebase/firestore';
@@ -36,7 +36,7 @@ function BookSubscription( uId , isSubscribed) {
 
     // Clean up the subscription on unmount
     return () => unsubscribe();
-  }, [db, uId]);
+  }, [uId]);
 
   const handleSelect = (tier) => {
     if (tier || isSubscribed) {
