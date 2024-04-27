@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider ,setPersistence, browserLocalPersistence, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
+import { getAuth, GoogleAuthProvider ,setPersistence, browserLocalPersistence, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'; // Import useEffect
 import { auth } from './sinup';
@@ -43,13 +43,16 @@ function SignIn() {
     });
     try {
       await setPersistence(auth, browserLocalPersistence);
-      await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      // The signed-in user info.
+      var user = result.user;
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="qontainer_2">
