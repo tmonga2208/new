@@ -270,7 +270,7 @@
     }
     
     .card img{
-        width: fit-content;
+        width: auto;
         height: 100%;
         object-fit:cover;
         transition: transform .7s; 
