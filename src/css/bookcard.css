@@ -23,7 +23,7 @@
 }
 
 .card img{
-    width: fit-content;
+    width: auto;
     height: 100%;
     position: absolute;
     left: 0%;
@@ -145,7 +145,7 @@
         }
         
         .card img{
-            width: fit-content;
+            width: auto;
             height: 100%;
             position: absolute;
             left: 0%;
