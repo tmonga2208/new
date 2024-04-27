@@ -1,4 +1,4 @@
-@media screen and (min-width:640px) {
+@media (min-width:640px) and (max-width:1800px) {
 .card{
     display: flex;
     flex-direction: column;
@@ -8,14 +8,14 @@
     padding: 20px;
     text-align: center;
     border-radius: 20%;
-    border: solid black 1px;
-    box-shadow: 2px 2px 2px red;
+    border: solid black none;
+    box-shadow: 2px 2px 2px 2px black;
     transition: box-shadow 0.3s ease;
     background-color: white;
     color: grey;
 }
 .card:hover{
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: 4px 4px 4px 4px grey;
 }
 .list li{
     list-style: none;
@@ -45,6 +45,7 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 12px;
+    padding: 4px 0px;
 }
 .btn.selected{
     background-color: white;
@@ -55,34 +56,55 @@
 @media screen and (max-width:640px) {
     .card{
         display: flex;
-        flex-direction: row;
-        width: 300px;
+        flex-direction: column;
+        width: 250px;
         height: 300px;
         margin: 20px;
         padding: 20px;
         text-align: center;
         border-radius: 20%;
         border: solid black 1px;
-        box-shadow: 2px 2px 2px red;
+        box-shadow: 2px 2px 2px 2px black;
         transition: box-shadow 0.3s ease;
+        background-color: white;
+        color: grey;
     }
     .card:hover{
-        box-shadow: 4px 4px 4px blue;
+        box-shadow: 4px 4px 4px 4px grey;
     }
     .list li{
         list-style: none;
-        color: black;
         cursor:pointer;
     }
     .head1 {
         align-self: center;
         text-align: center;
-        height: 40%;
+        height: 20%;
+        font-size: 2em;
     }
     
     .list {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 40%;
+        padding: 5%;
+    }
+    .btn{
+        background-color: #7971EA;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 12px;
+        padding: 4px 0px;
+    }
+    .btn.selected{
+        background-color: white;
+        color: #7971EA;
+        border: solid #7971EA 1px;
     }
     }

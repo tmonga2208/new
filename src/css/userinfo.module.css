@@ -1,7 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+@media screen and (min-width: 600px){
 .head{
     display: flex;
     background-color: black;
@@ -26,20 +23,29 @@
     justify-content: center;
     margin-top: 50px;
 }
-.container .profilePic{
+.container .profilePicWrapper {
     width: 20%;
-    height: 20%;
-    border-radius: 100%;
+    padding-bottom: 20%; /* This makes the aspect ratio 1:1 */
+    border-radius: 50%;
+    overflow: hidden; /* This hides the parts of the image that are outside the circle */
+    position: relative; /* This allows the image to be positioned absolutely within the wrapper */
+}
+
+.container .profilePicWrapper .profilePic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover; /* This scales the image to cover the entire wrapper */
 }
 .email{
-    width: 20%;
+    width: 40%;
     padding: 10px;
     border: solid black 1px;
     margin: 10px;
 }
 .username{
     margin: 10px;
-    width: 20%;
+    width: 40%;
     padding: 10px;
     border: solid black 1px;
 }
@@ -49,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+}
 }
 @media screen and (max-width: 600px){
     .head{
@@ -61,29 +68,51 @@
         width: 100%;
         height: 50px;
     }
-    .container img{
-        width: 50%;
-        height: 50%;
+    .back{
+        position: absolute;
+        height: 50px;
+        width: 90px;
+        top: 0;
+        left: 0;
     }
-    .email{
-        width: 50%;
-    }
-    .username{
-        width: 50%;
-    }
-    .password{
-        width: 50%;
-        margin: 10px;
+    .container{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
+        margin-top: 50px;
     }
-    .password button{
-        width: 100%;
-        align-items: center;
-        justify-content: center;
+    .container .profilePicWrapper {
+        width: 40%;
+        padding-bottom: 40%; /* This makes the aspect ratio 1:1 */
+        border-radius: 50%;
+        overflow: hidden; /* This hides the parts of the image that are outside the circle */
+        position: relative; /* This allows the image to be positioned absolutely within the wrapper */
     }
     
+    .container .profilePicWrapper .profilePic {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover; /* This scales the image to cover the entire wrapper */
+    }
+    .email{
+        width: 80%;
+        padding: 10px;
+        border: solid black 1px;
+        margin: 10px;
+    }
+    .username{
+        margin: 10px;
+        width: 80%;
+        padding: 10px;
+        border: solid black 1px;
+    }
+    .password{
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+    }
 }

@@ -73,6 +73,7 @@ const handlePayNow = async () => {
   return(
     <>
     <NavBar/>
+    <div className={styles.hq}>
     <div className={styles.container}>
       {BookSS.map((book, index) => (
         <BookComponent
@@ -89,6 +90,7 @@ const handlePayNow = async () => {
     </div>
     <div className={styles.payment}>
       <button className={styles.paybtn} onClick ={handlePayNow}>Pay Now</button>
+    </div>
     </div>
     <Footer/>
     </>
