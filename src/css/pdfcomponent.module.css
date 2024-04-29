@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.can{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cos{
+    border: solid black 2px ;
+}
+.prv{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nxt{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+}

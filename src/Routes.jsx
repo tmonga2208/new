@@ -1,5 +1,5 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState ,useContext , useParams} from "react";
 import SignUp from "./signup";
 import BigPage from "./BigPage.jsx";
 import HomePageBig from "./HomePageBig.jsx";
@@ -14,8 +14,38 @@ import UserInfo from "./userinfo.jsx";
 import AboutUs from "./aboutus.jsx";
 import ContactForm from "./contact.jsx";
 import BookSubscription from "./book_subscription.jsx";
+import PDFRenderer from "./pdfrender.jsx";
+import { doc,getDoc } from 'firebase/firestore';
+import { db } from './sinup';
+import { UserContext } from "./usercontxt.jsx";
+import URLS from './pdfs';
 
 function Route1(){
+  const [tier, setTier] = useState(null);
+ const { user } = useContext(UserContext);
+
+useEffect(() => {
+  const fetchSubscription = async () => {
+    console.log('user:', user);
+    if (!user) {
+      console.log('User is not logged in');
+      setTier('Free');
+      return;
+    } else {
+      console.log('User is logged in');
+      const userDoc = doc(db, 'subscriptions', String(user.uid)); // 'subscriptions' is your collection name
+      const docSnap = await getDoc(userDoc);
+
+      if (docSnap.exists()) {
+        setTier(docSnap.data().tier); // 'tier' is your field name
+      } else {
+        console.log('No such document!');
+      }
+    }
+  };
+
+  fetchSubscription();
+}, [user]);
     return (
         <BrowserRouter>
         <Routes>
@@ -32,6 +62,7 @@ function Route1(){
             <Route path="/userinfo" element={<UserInfo/>} />
             <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/contact" element={<ContactForm/>} />
+            <Route path="/read/:id"element={<PDFRenderer tier={tier} />} />
             <Route path="/subscription" element={<BookSubscription/>} />
             {Books.map((book, index) => (
           <Route 
