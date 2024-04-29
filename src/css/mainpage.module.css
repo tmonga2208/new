@@ -36,7 +36,8 @@
 .bout{
     display: flex;
     flex-direction: column;
-    max-width: 10%;
+    justify-content: center;
+    align-items: center;
 }
 .bout .bigbout{
     width: 100%;
@@ -53,9 +54,14 @@
 .smallbout{
     display: flex;
     flex-direction: row;
+
 }
 .bigbout , .smallbout{
     margin-right: 20%
+}
+.usname{
+    font-size: 1rem;
+    font-weight: 700;
 }
 }
 @media screen and (max-width: 640px){
@@ -114,6 +120,8 @@
     .smallbout{
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
     .bigbout , .smallbout{
         margin-right: 20%

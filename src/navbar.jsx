@@ -1,9 +1,9 @@
 import React ,{ useState , useEffect} from "react";
 import './css/navbar.css';
-import { auth } from './sinup';
+import {auth} from "./sinup"
 import { Link } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import { getAuth , onAuthStateChanged } from 'firebase/auth';
+import { getAuth , onAuthStateChanged} from 'firebase/auth';
 
 
 const defaultPicUrl = 'img/x2345.svg'
@@ -13,6 +13,7 @@ function NavBar(){
   const auth = getAuth();
   const user = auth.currentUser;
   const [profilePicUrl, setProfilePicUrl] = useState('');
+  const [darkmode, setDarkmode] = useState(false);
   useEffect(() => {
     if (auth.currentUser) {
       const profilePicRef = ref(storage, `profileImages/${auth.currentUser.uid}.png`); // replace with the actual path to the image
@@ -25,6 +26,20 @@ function NavBar(){
         });
     }
   }, [auth.currentUser]);
+  const toggleDarkMode = () => {
+    setDarkmode(!darkmode);
+  }
+
+  useEffect(() => {
+    if (darkmode) {
+      document.body.style.backgroundColor = "black";
+      document.body.style.color = "white";
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+    }
+  }, [darkmode]);
+
     return (
        <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-black" aria-label="Fourth navbar example">
@@ -42,11 +57,11 @@ function NavBar(){
             <Link className="nav-link" to="/home">Home</Link>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Authors</a>
+            <button className="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Authors</button>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="/browse1">Rick Riordan</a></li>
-              <li><a className="dropdown-item" href="#">Jk Rowling</a></li>
-              <li><a className="dropdown-item" href="#">Rick Riordan Presents </a></li>
+              <li><a className="dropdown-item" href="/browse4">Jk Rowling</a></li>
+              <li><a className="dropdown-item" href="/browse5">Rick Riordan Presents </a></li>
             </ul>
           </li>
           <li className="nav-item">
@@ -63,9 +78,12 @@ function NavBar(){
           </li>
          {!user && (
           <li className="nav-item">
-          <a className="nav-link bg-dark">Sign In</a>
+          <Link className="nav-link bg-dark" to="/signup">Sign In</Link>
           </li>
          )}
+        <li className="nav-item">
+          <button className="nav-link" onClick={toggleDarkMode}>D</button>
+        </li>
         </ul>
 <div className="profile">
 <div className="dropdown">

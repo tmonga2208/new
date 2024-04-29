@@ -3,7 +3,6 @@ import NavBar from './navbar';
 import Footer from './footer';
 import styles from './css/contact.module.css';
 import emailjs from '@emailjs/browser';
-
 const ContactForm = () => {
   const form = useRef();
 const [name, setName] = useState('');
@@ -35,7 +34,7 @@ const [email, setEmail] = useState('');
       <NavBar/>
       <h1 className={styles.contit}>Contact Us</h1>
       <div className={styles.ContactForm}>
-        <form ref={form} onSubmit={sendEmail}>
+        <form ref={form} onSubmit={sendEmail} className={styles.fefe}>
           <label>
             Name:
             <input className={styles.in} type="text" name="user_name" required onChange={e => setName(e.target.value)} />
@@ -46,6 +45,13 @@ const [email, setEmail] = useState('');
           </label>
           <label>
             Message:
+            <textarea className={styles.in} name="message" required />
+          </label>
+          <input className={styles.but} type="submit" value="Send" />
+        </form>
+        <form ref={form} onSubmit={sendEmail} className={styles.fefe}>
+          <label>
+           Want To Request A Book ? :
             <textarea className={styles.in} name="message" required />
           </label>
           <input className={styles.but} type="submit" value="Send" />

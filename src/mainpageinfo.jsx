@@ -45,6 +45,7 @@ function MainPageInfo({book ,more}){
         <div>
             <NavBar/>
             <More1
+            id ={book.id.toString() + 1}
             key = {index}
             img = {images[index]}
             title = {book.book}
@@ -52,7 +53,6 @@ function MainPageInfo({book ,more}){
             summary = {more.summary}
             read = {reads[index]}
             bu_y = {more.bu_y}
-            comreview = {more.com_rev[0]}
             />
             <Footer/>
         </div>

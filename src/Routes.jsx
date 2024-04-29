@@ -19,6 +19,7 @@ import { doc,getDoc } from 'firebase/firestore';
 import { db } from './sinup';
 import { UserContext } from "./usercontxt.jsx";
 import URLS from './pdfs';
+import HomeWow from "./homewow.jsx";
 
 function Route1(){
   const [tier, setTier] = useState(null);
@@ -56,7 +57,7 @@ useEffect(() => {
             <Route path="browse3" element={<BigPage3/>} />
             <Route path="signup" element={<SignUp/>} />
             <Route path="signin" element={<SignIn/>} />
-            <Route path="home" element={<HomePageBig/>} />
+            <Route path="home" element={<HomeWow/>} />
             <Route path="/chat" element={<Community1/>} /> 
             <Route path="/chat" element={<Community1/>} /> 
             <Route path="/userinfo" element={<UserInfo/>} />

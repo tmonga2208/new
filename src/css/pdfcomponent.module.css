@@ -1,3 +1,4 @@
+@media (min-width:700px) and (max-width:1800px) {
 .container{
     display: flex;
     flex-direction: row;
@@ -23,3 +24,32 @@
     justify-content: center;
     align-items: center;
 }
+}
+@media screen and (max-width:700px){
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .can{
+        width: 90vw;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cos{
+        border: solid black 2px ;
+    }
+    .prv{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nxt{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    }
