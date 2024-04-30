@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { doc,getDoc } from 'firebase/firestore';
 import { db } from './sinup';
 import URLS from './pdfs';
-import { getDocument } from 'pdfjs-dist';
 
 function BookCard({ uId, ...props }) {
   const [tier, setTier] = useState(null);

@@ -63,6 +63,17 @@
     font-size: 1rem;
     font-weight: 700;
 }
+.qw{
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    margin: 2% 0%;
+}
+.qw h1{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 2%;
+}
 }
 @media screen and (max-width: 640px){
     .max_con{
@@ -125,5 +136,16 @@
     }
     .bigbout , .smallbout{
         margin-right: 20%
+    }
+    .qw{
+        display: flex;
+        flex-direction: column;
+        border: solid black 2px;
+        margin: 2% 0%;
+    }
+    .qw h1{
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2%;
     }
 }

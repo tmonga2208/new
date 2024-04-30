@@ -1,5 +1,5 @@
 import { BrowserRouter , Routes , Route } from "react-router-dom";
-import React, { useEffect, useState ,useContext , useParams} from "react";
+import React, { useEffect, useState ,useContext } from "react";
 import SignUp from "./signup";
 import BigPage from "./BigPage.jsx";
 import HomePageBig from "./HomePageBig.jsx";
@@ -18,7 +18,6 @@ import PDFRenderer from "./pdfrender.jsx";
 import { doc,getDoc } from 'firebase/firestore';
 import { db } from './sinup';
 import { UserContext } from "./usercontxt.jsx";
-import URLS from './pdfs';
 import HomeWow from "./homewow.jsx";
 
 function Route1(){
@@ -69,7 +68,7 @@ useEffect(() => {
           <Route 
             key={index}
             path={`/more/${index}`}
-            element={<MainPageInfo book={book} more={More[index]} />}
+            element={<MainPageInfo book={book} more={More[index] } />}
           />
         ))}
         </Routes>

@@ -4,11 +4,55 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, collection, addDoc, onSnapshot } from "firebase/firestore";
 import { db } from "./sinup";
 import { auth } from "./sinup";
+import {UserContext} from "./usercontxt.jsx"
+import { useNavigate } from "react-router-dom";
+import {getDoc } from 'firebase/firestore';
+import URLS from "./pdfs.js";
 
 function More1(props){
     const [displayName, setDisplayName] = useState('');
     const [review, setReview] = useState('');
     const [submittedReviews, setSubmittedReviews] = useState([]);
+    const uId = React.useContext(UserContext);
+    const [tier, setTier] = useState(null);
+    const navigate = useNavigate();
+    const ok = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    const index = ok.indexOf(Number(props.id));
+  
+    useEffect(() => {
+  const fetchSubscription = async () => {
+    console.log('uId:', uId);
+    if (!uId || !uId.user) {
+      console.log('User is not logged in');
+      setTier('Free');
+      return;
+    } else {
+      console.log('User is logged in');
+      const userDoc = doc(db, 'subscriptions', String(uId.user.uid)); // 'subscriptions' is your collection name
+      const docSnap = await getDoc(userDoc);
+  
+      if (docSnap.exists()) {
+        setTier(docSnap.data().tier); // 'tier' is your field name
+      } else {
+        console.log('No such document!');
+      }
+    }
+  };
+      fetchSubscription();
+    }, [uId]);
+  
+    useEffect(() => {
+    console.log('tier:', tier);
+  }, [tier]);
+    const isReadDisabled = tier === 'Free';
+
+const handleReadClick = (index) => {
+  if (isReadDisabled) {
+    navigate('/subscription'); // Replace '/subscription' with your correct route name
+  } else {
+    navigate(`/read/${ok[index]}`); 
+  }
+};
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -78,7 +122,7 @@ function More1(props){
     );
 })}
 </div>
-            <div>
+            <div className={styles.qw}>
                 <h1>Add A Review!</h1>
                 <textarea
                     className={styles.texta}
@@ -91,7 +135,7 @@ function More1(props){
             </div>
             <div className={styles.bout}>
                 <div className={styles.bigbout}>
-                    <a href={props.read} target="_blank" rel="noreferrer"><button className={styles.btn_1}>Read</button></a>
+                    <a href={props.read} target="_blank" rel="noreferrer"><button className={styles.btn_1} onClick={ () => handleReadClick(index)}>Read</button></a>
                 </div>
                 <div className={styles.smallbout}>
                     <a href={props.bu_y} target="_blank" rel="noreferrer"><button className={styles.btn_2}>Buy</button></a>
