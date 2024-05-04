@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./css/mainpage.module.css";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, collection, addDoc, onSnapshot } from "firebase/firestore";
+import { doc, collection, addDoc, onSnapshot, deleteDoc } from "firebase/firestore";
 import { db } from "./sinup";
 import { auth } from "./sinup";
 import {UserContext} from "./usercontxt.jsx"
 import { useNavigate } from "react-router-dom";
 import {getDoc } from 'firebase/firestore';
-import URLS from "./pdfs.js";
 
 function More1(props){
     const [displayName, setDisplayName] = useState('');
@@ -18,41 +17,41 @@ function More1(props){
     const navigate = useNavigate();
     const ok = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     const index = ok.indexOf(Number(props.id));
-  
+
     useEffect(() => {
-  const fetchSubscription = async () => {
-    console.log('uId:', uId);
-    if (!uId || !uId.user) {
-      console.log('User is not logged in');
-      setTier('Free');
-      return;
-    } else {
-      console.log('User is logged in');
-      const userDoc = doc(db, 'subscriptions', String(uId.user.uid)); // 'subscriptions' is your collection name
-      const docSnap = await getDoc(userDoc);
-  
-      if (docSnap.exists()) {
-        setTier(docSnap.data().tier); // 'tier' is your field name
-      } else {
-        console.log('No such document!');
-      }
-    }
-  };
-      fetchSubscription();
+        const fetchSubscription = async () => {
+            console.log('uId:', uId);
+            if (!uId || !uId.user) {
+                console.log('User is not logged in');
+                setTier('Free');
+                return;
+            } else {
+                console.log('User is logged in');
+                const userDoc = doc(db, 'subscriptions', String(uId.user.uid)); // 'subscriptions' is your collection name
+                const docSnap = await getDoc(userDoc);
+
+                if (docSnap.exists()) {
+                    setTier(docSnap.data().tier); // 'tier' is your field name
+                } else {
+                    console.log('No such document!');
+                }
+            }
+        };
+        fetchSubscription();
     }, [uId]);
-  
+
     useEffect(() => {
-    console.log('tier:', tier);
-  }, [tier]);
+        console.log('tier:', tier);
+    }, [tier]);
     const isReadDisabled = tier === 'Free';
 
-const handleReadClick = (index) => {
-  if (isReadDisabled) {
-    navigate('/subscription'); // Replace '/subscription' with your correct route name
-  } else {
-    navigate(`/read/${ok[index]}`); 
-  }
-};
+    const handleReadClick = (index) => {
+        if (isReadDisabled) {
+            navigate('/subscription'); // Replace '/subscription' with your correct route name
+        } else {
+            navigate(`/read/${ok[index]}`); 
+        }
+    };
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -88,7 +87,12 @@ const handleReadClick = (index) => {
         console.log('submitReview function called');
         const newReview = `${review}`;
         setReview('');
-    
+
+        if (!displayName) {
+            alert('You need to sign in first');
+            return;
+        }
+
         if (props.id) {
             try {
                 await addDoc(collection(doc(db, "books", props.id), "reviews"), {
@@ -98,6 +102,13 @@ const handleReadClick = (index) => {
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
+        }
+    };
+
+    const handleDeleteReview = async (id) => {
+        if (props.id) {
+            const reviewDoc = doc(db, "books", props.id, "reviews", id);
+            await deleteDoc(reviewDoc);
         }
     };
 
@@ -114,24 +125,29 @@ const handleReadClick = (index) => {
                     <p className={styles.book_summary}>{props.summary}</p>
                 </div>
                 <div className={styles.rev}>
-    <h1>Reviews</h1>
-    {submittedReviews.map((review) => {
+                    <h1>Reviews</h1>
+                    {submittedReviews.map((review) => {
     console.log(review);
     return (
-        <p key={review.id} className={styles.com_rev}>@{review.displayName}: {review.review}</p>
+        <div key={review.id} className={styles.com_rev}>
+            <p>@{review.displayName}: {review.review}</p>
+            {review.displayName === displayName && (
+                <button onClick={() => handleDeleteReview(review.id)}>Delete</button>
+            )}
+        </div>
     );
 })}
-</div>
-            <div className={styles.qw}>
-                <h1>Add A Review!</h1>
-                <textarea
-                    className={styles.texta}
-                    placeholder="Write your review here..."
-                    value={review}
-                    onChange={handleReviewChange}
-                />
-                <button className={styles.sub} onClick={submitReview}>Submit</button>
-            </div>
+                </div>
+                <div className={styles.qw}>
+                    <h1>Add A Review!</h1>
+                    <textarea
+                        className={styles.texta}
+                        placeholder="Write your review here..."
+                        value={review}
+                        onChange={handleReviewChange}
+                    />
+                    <button className={styles.sub} onClick={submitReview}>Submit</button>
+                </div>
             </div>
             <div className={styles.bout}>
                 <div className={styles.bigbout}>

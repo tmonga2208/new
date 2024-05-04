@@ -11,8 +11,8 @@ function UserInfo() {
   const auth = getAuth();
   const [user, setUser] = useState('');
   const [profilePicUrl, setProfilePicUrl] = useState('');
-  const [username, setUsername] = useState(''); 
-  const [editableUsername, setEditableUsername] = useState('');
+  const [displayName, setDisplayName] = useState(''); 
+  const [editableDisplayName, setEditableDisplayName] = useState('');
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -20,11 +20,10 @@ function UserInfo() {
     const unsubscribe = onIdTokenChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        // If the user signed in with Google, use the Google profile picture
         if (currentUser.providerData[0].providerId === 'google.com') {
           setProfilePicUrl(currentUser.photoURL);
         } else {
-          const profilePicRef = ref(storage, `profileImages/${currentUser.uid}.png`); // replace with the actual path to the image
+          const profilePicRef = ref(storage, `profileImages/${currentUser.uid}.png`);
           getDownloadURL(profilePicRef)
             .then((url) => {
               setProfilePicUrl(url);
@@ -33,59 +32,57 @@ function UserInfo() {
               console.error(error);
             });
         }
-        // Fetch the username from Firestore
         const docRef = doc(db, 'users', currentUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setUsername(docSnap.data().username);
-          setEditableUsername(docSnap.data().username);
+          setDisplayName(docSnap.data().displayName);
+          setEditableDisplayName(docSnap.data().displayName);
         } else {
           console.log('No such document!');
         }
       }
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth]);
 
-const handleFileChange = (e) => {
-  const selectedFile = e.target.files[0];
-  setFile(selectedFile);
-  handleUpload(selectedFile);
-};
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    handleUpload(selectedFile);
+  };
 
-const handleUpload = (fileToUpload) => {
-  if (fileToUpload) {
-    const storageRef = ref(storage, `profileImages/${user.uid}.png`);
-    const uploadTask = uploadBytesResumable(storageRef, fileToUpload);
+  const handleUpload = (fileToUpload) => {
+    if (fileToUpload) {
+      const storageRef = ref(storage, `profileImages/${user.uid}.png`);
+      const uploadTask = uploadBytesResumable(storageRef, fileToUpload);
 
-    uploadTask.on('state_changed', 
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress);
-      }, 
-      (error) => {
-        console.error(error);
-      }, 
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setProfilePicUrl(downloadURL);
-        });
-      }
-    );
-  }
-};
+      uploadTask.on('state_changed', 
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(progress);
+        }, 
+        (error) => {
+          console.error(error);
+        }, 
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setProfilePicUrl(downloadURL);
+          });
+        }
+      );
+    }
+  };
 
-  const updateUsername = () => {
+  const updateDisplayName = () => {
     if (user) {
-      const userDoc = doc(db, 'users', user.uid); // 'users' is your collection name
+      const userDoc = doc(db, 'users', user.uid);
       updateDoc(userDoc, {
-        username: editableUsername, // 'username' is your field name
+        displayName: editableDisplayName,
       }).then(() => {
-        console.log('Username updated successfully');
+        console.log('Display name updated successfully');
       }).catch((error) => {
-        console.error('Error updating username:', error);
+        console.error('Error updating display name:', error);
       });
     } else {
       console.log('No user is currently logged in.');
@@ -111,8 +108,8 @@ const handleUpload = (fileToUpload) => {
       <input id="fileInput" type="file" onChange={handleFileChange} className={css.fileInput} />
       </div>
       <p className={css.email}>Email: {user.email}</p>
-     <input className={css.username} value={editableUsername} onChange={(e) => setEditableUsername(e.target.value)}/>
-     <button onClick={updateUsername}>Save Changes</button>
+     <input className={css.username} value={editableDisplayName} onChange={(e) => setEditableDisplayName(e.target.value)}/>
+     <button onClick={updateDisplayName}>Save Changes</button>
       <p className={css.password}>
       <Link to='/home'><button className={css.password}>Change Password</button></Link>
       </p>
