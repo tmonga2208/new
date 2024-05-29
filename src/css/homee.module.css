@@ -1,0 +1,174 @@
+@media (min-width:640px) and (max-width:1800px) {
+.top {
+    position: relative;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.head {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.but {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.carouselTrack {
+    display: flex;
+    animation: scroll 15s linear infinite;
+}
+
+.carouselImage {
+    width: 200px;
+    margin-right: 10px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.rec {
+    margin: 20px;
+    overflow: hidden;
+}
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    animation: carousel 30s infinite linear;
+}
+
+@keyframes carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.homee {
+    display: flex;
+    flex-direction: row;
+}
+
+.top{
+    width:50%;
+}
+.righti{
+    width: 40%;
+    position:absolute;
+    border: solid 1px black;
+    top: 25%;
+    right: 1%;
+    text-align: center;
+    height: 80%;
+}
+
+}
+@media screen and (max-width:640px) {
+    .top {
+        position: relative;
+        margin: 20px;
+        overflow: hidden;
+    }
+    
+    .head {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .but {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    
+    .carouselTrack {
+        display: flex;
+        animation: scroll 15s linear infinite;
+    }
+    
+    .carouselImage {
+        width: 200px;
+        margin-right: 10px;
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    
+    .rec {
+        margin: 20px;
+        overflow: hidden;
+    }
+    .carousel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+    
+    .carousel img {
+        width: 100%;
+        animation: carousel 30s infinite linear;
+    }
+    
+    @keyframes carousel {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    .homee {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .top{
+        width:90%;
+    }
+    .righti{
+        width:90%;
+        position: relative;
+        margin: 20px;
+        overflow: hidden;
+        border: solid 1px black;
+        text-align: center;
+        height: 80%;
+    }
+    
+    }

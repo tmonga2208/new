@@ -1,10 +1,10 @@
 import React ,{ useState , useEffect} from "react";
 import './css/navbar.css';
-import {auth} from "./sinup"
+import {auth} from './sinup';
 import { Link } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import { getAuth , onAuthStateChanged} from 'firebase/auth';
-
+import { getAuth} from 'firebase/auth';
+import Books from "./books";
 
 const defaultPicUrl = 'img/x2345.svg'
 const storage = getStorage();
@@ -13,7 +13,6 @@ function NavBar(){
   const auth = getAuth();
   const user = auth.currentUser;
   const [profilePicUrl, setProfilePicUrl] = useState('');
-  const [darkmode, setDarkmode] = useState(localStorage.getItem('darkmode') === 'true');
   useEffect(() => {
     if (auth.currentUser) {
       const profilePicRef = ref(storage, `profileImages/${auth.currentUser.uid}.png`); // replace with the actual path to the image
@@ -26,22 +25,25 @@ function NavBar(){
         });
     }
   }, [auth.currentUser]);
-const toggleDarkMode = () => {
-  const newDarkMode = !darkmode;
-  setDarkmode(newDarkMode);
-  localStorage.setItem('darkmode', newDarkMode.toString());
-}
+const [isSearchVisible, setSearchVisible] = useState(false);
 
- useEffect(() => {
-  if (darkmode) {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-  } else {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
+const toggleSearch = () => {
+  setSearchVisible(!isSearchVisible);
+};
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    setSearchResults(searchBooks(event.target.value));
+  };
+
+  function searchBooks(query) {
+    return Books.filter(book => 
+      book.title.toLowerCase().includes(query.toLowerCase()) ||
+      book.author.toLowerCase().includes(query.toLowerCase())
+    );
   }
-}, [darkmode]);
-
     return (
        <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-black" aria-label="Fourth navbar example">
@@ -54,6 +56,7 @@ const toggleDarkMode = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarsExample04">
+      {!isSearchVisible && (
         <ul className="navbar-nav me-auto mb-2 mb-md-0">
           <li className="nav-item">
             <Link className="nav-link" to="/home">Home</Link>
@@ -82,14 +85,38 @@ const toggleDarkMode = () => {
           <li className="nav-item">
           <Link className="nav-link bg-dark" to="/signup">Sign In</Link>
           </li>
+        )}
+          </ul>
          )}
-        <li className="nav-item">
-          <button className="nav-link" onClick={toggleDarkMode}>D</button>
-        </li>
-        </ul>
+<div className="nav-item" style={{color: 'white'}}>
+  <button className="nav-link" onClick={toggleSearch}>
+    {isSearchVisible ? 'Hide Search' : 'Search'}
+  </button>
+  {isSearchVisible && (
+    <div>
+      <input 
+        type="search" 
+        className="search-input" 
+        value={searchQuery} 
+        onChange={handleSearch} 
+        placeholder="Search books..." 
+      />
+      {searchQuery && (
+        <div className="search-results">
+          {searchResults.map(book => (
+            <div key={book.id}>
+              <h2>{book.title}</h2>
+              <p>{book.author}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+</div>
 <div className="profile">
 <div className="dropdown">
-  <a className="profilepage " href="#" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+  <Link className="profilepage " href="#" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
   {
   auth.currentUser 
   ? auth.currentUser.providerData[0].providerId === 'google.com'
@@ -99,7 +126,7 @@ const toggleDarkMode = () => {
         <path d="M14.5 2A12.514 12.514 0 0 0 2 14.5 12.521 12.521 0 0 0 14.5 27a12.5 12.5 0 0 0 0-25Zm7.603 19.713a8.48 8.48 0 0 0-15.199.008A10.367 10.367 0 0 1 4 14.5a10.5 10.5 0 0 1 21 0 10.368 10.368 0 0 1-2.897 7.213ZM14.5 7a4.5 4.5 0 1 0 4.5 4.5A4.5 4.5 0 0 0 14.5 7Z"></path>
       </svg>
 }
-  </a>
+  </Link>
   {
   auth.currentUser 
     ? <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
@@ -126,5 +153,4 @@ const toggleDarkMode = () => {
     </div> 
     );
 }
-
 export default NavBar;

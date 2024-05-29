@@ -2,7 +2,7 @@ const Books = [
     {
         id : 0 ,
         book :  "The Lightning Thief" ,
-        title : "Percy Jackson And The Olympians"  ,
+        title : "Percy Jackson And The Olympians #1" ,
         author : "Rick Riordan" ,
         body : "500 Pages",
         next : "/browse2" ,
@@ -11,7 +11,7 @@ const Books = [
     {
         id : 1 ,
         book :  "Sea Of Monsters" ,
-        title : "Percy Jackson And The Olympians"  ,
+        title : "Percy Jackson And The Olympians #2"  ,
         author : "Rick Riordan" ,
         body : "500 Pages",
         next : "/browse3" ,
@@ -20,7 +20,7 @@ const Books = [
     {
         id : 2 ,
         book :  "The Titan's Curse" ,
-        title : "Percy Jackson And The Olympians"  ,
+        title : "Percy Jackson And The Olympians #3"  ,
         author : "Rick Riordan" ,
         body : "500 Pages",
         prev :"/browse2" ,
@@ -28,14 +28,14 @@ const Books = [
     {
         id : 3 ,
         book :  "The Battle of Labyrinth" ,
-        title : "Percy Jackson And The Olympians"  ,
+        title : "Percy Jackson And The Olympians #4"  ,
         author : "Rick Riordan" ,
         body : "500 Pages",
         } ,
     {
         id : 4 ,
         book :  "The Last Olympian" ,
-        title : "Percy Jackson And The Olympians"  ,
+        title : "Percy Jackson And The Olympians #5"  ,
         author : "Rick Riordan" ,
         body : "500 Pages",
         } ,

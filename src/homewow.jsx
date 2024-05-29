@@ -1,9 +1,14 @@
 import React from "react";
+import NavBar from "./navbar";
+import Homee from "./homee";
+import Footer from "./footer"
 
 function HomeWow(){
     return(
         <div>
-            <h1>Home Wow</h1>
+            <NavBar/>
+            <Homee/>
+            <Footer/>
         </div>
     );
 }
