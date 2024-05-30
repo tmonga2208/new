@@ -24,7 +24,6 @@ const Books = [
         author : "Rick Riordan" ,
         body : "500 Pages",
         prev :"/browse2" ,
-        next :"/browse4" ,
         } ,
     {
         id : 3 ,
@@ -32,7 +31,6 @@ const Books = [
         title : "Percy Jackson And The Olympians #4"  ,
         author : "Rick Riordan" ,
         body : "500 Pages",
-        prev :"/browse3" ,
         } ,
     {
         id : 4 ,

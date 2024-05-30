@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { getAuth} from 'firebase/auth';
 import Books from "./books";
+import axios from "axios";
 
 const defaultPicUrl = 'img/x2345.svg'
 const storage = getStorage();
@@ -13,6 +14,31 @@ function NavBar(){
   const auth = getAuth();
   const user = auth.currentUser;
   const [profilePicUrl, setProfilePicUrl] = useState('');
+  const [searchq, setSearchq] = useState('');
+  useEffect(() => {
+    const fetchBooks = async () => {
+      if (searchq) {
+        try {
+          const response = await axios.get(`https://openlibrary.org/search.json?q=${searchq}`);
+          const books = response.data.docs.map(book => ({
+            id: book.key,
+            title: book.title,
+            author: book.author_name?.[0] || "Unknown Author",
+            pages: book.number_of_pages_median || "Unknown Pages",
+            coverImage: `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`,
+            summary: book.first_sentence?.[0] || "No summary available",
+          }));
+          setSearchResults(books);
+        } catch (error) {
+          console.error('Error fetching books:', error);
+        }
+      } else {
+        setSearchResults([]);
+      }
+    };
+    fetchBooks();
+  }, [searchq]);
+
   useEffect(() => {
     if (auth.currentUser) {
       const profilePicRef = ref(storage, `profileImages/${auth.currentUser.uid}.png`); // replace with the actual path to the image
@@ -30,20 +56,11 @@ const [isSearchVisible, setSearchVisible] = useState(false);
 const toggleSearch = () => {
   setSearchVisible(!isSearchVisible);
 };
-  const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
-    setSearchResults(searchBooks(event.target.value));
-  };
-
-  function searchBooks(query) {
-    return Books.filter(book => 
-      book.title.toLowerCase().includes(query.toLowerCase()) ||
-      book.author.toLowerCase().includes(query.toLowerCase())
-    );
-  }
+const handleSearch = (event) => {
+  setSearchq(event.target.value);
+};
     return (
        <div>
         <nav className="navbar navbar-expand-md navbar-dark bg-black" aria-label="Fourth navbar example">
@@ -97,11 +114,11 @@ const toggleSearch = () => {
       <input 
         type="search" 
         className="search-input" 
-        value={searchQuery} 
+        value={searchq} 
         onChange={handleSearch} 
         placeholder="Search books..." 
       />
-      {searchQuery && (
+      {searchq && (
         <div className="search-results">
           {searchResults.map(book => (
             <div key={book.id}>
@@ -113,6 +130,7 @@ const toggleSearch = () => {
       )}
     </div>
   )}
+</div>
 </div>
 <div className="profile">
 <div className="dropdown">
@@ -148,7 +166,6 @@ const toggleSearch = () => {
 </div>
 </div>
       </div>
-    </div>
   </nav>
     </div> 
     );
