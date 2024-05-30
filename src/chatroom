@@ -1,0 +1,62 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { collection, query, orderBy, addDoc } from 'firebase/firestore';
+import { auth, firestore } from './sinup2.js';
+import { serverTimestamp } from 'firebase/firestore';
+import css from './css/community.module.css';
+
+function ChatRoom({ selectedGroup }) {
+  const dummy = useRef();
+  const messagesRef = collection(firestore, `groups/${selectedGroup}/messages`);
+  const messagesQuery = query(messagesRef, orderBy('createdAt'));
+  const [messages] = useCollectionData(messagesQuery, { idField: 'id' });
+  const [formValue, setFormValue] = useState('');
+
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    const { uid, photoURL } = auth.currentUser;
+    await addDoc(messagesRef, {
+      text: formValue,
+      createdAt: serverTimestamp(),
+      uid,
+      photoURL
+    });
+    setFormValue('');
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <main className={css.main}>
+        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+        <span ref={dummy}></span>
+      </main>
+      <form className={css.form} onSubmit={sendMessage}>
+        <input 
+          className={css.input} 
+          value={formValue} 
+          onChange={(e) => setFormValue(e.target.value)} 
+          placeholder="Type a message..." 
+        />
+        <button type="submit" disabled={!formValue}>Send</button>
+      </form>
+    </>
+  );
+}
+
+function ChatMessage({ message }) {
+  const { text, uid, photoURL } = message;
+  const messageClass = uid === auth.currentUser.uid ? css.sent : css.received;
+  return (
+    <div className={`${css.message} ${messageClass}`}>
+      <img className={css.photo} src={photoURL || 'https://www.vecteezy.com/vector-art/20765399-default-profile-account-unknown-icon-black-silhouette'} alt="Avatar" />
+      <p>{text}</p>
+    </div>
+  );
+}
+
+export default ChatRoom;

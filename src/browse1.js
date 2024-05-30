@@ -23,6 +23,7 @@ function Browse1(){
                 img = {image0}
                 buy = {Books[0].buy}
                 index ={Books[0].id}
+                review = {Books[0].review}
                 uId={userId}
                 />
                 <BookCard 
